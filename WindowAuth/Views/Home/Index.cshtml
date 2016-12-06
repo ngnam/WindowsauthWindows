@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h3>Kiểm tra quyền</h3>
+@if (User.IsInRole(@"BUILTIN\Administrators") || User.IsInRole(@"DOMAIN\Sales"))
+{
+    <div>Is an administrator or sales person</div>
+    @User.Identity.Name
+    
+}
+
+@ViewBag.isAdmin
+
+<h3>Danh sách quyền: </h3>
+@foreach (var role in Roles.GetRolesForUser())
+{
+    <div>User belongs to @role</div>
+}
